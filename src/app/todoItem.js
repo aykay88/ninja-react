@@ -1,13 +1,16 @@
-var React = require('react');
-require('./css/todoItem.css')
+import React from 'react'
+import './css/todoItem.css'
 //Create todoItem component
-var TodoItem = React.createClass({
-    render: function() {
+export default class TodoItem extends React.Component {
+    constructor() {
+        super();
+        this.handleDelete = this.handleDelete.bind(this);
+    }
+    render() {
         return (
             <li>
                 <div className="todo-item">
                     <span className="item-name">{this.props.item}</span>
-
                     <span className="item-delete" onClick={this.handleDelete}>
                         x
                     </span>
@@ -15,14 +18,12 @@ var TodoItem = React.createClass({
             </li>
         );
 
-    },
+    }
 
     //Custom functions
 
-    handleDelete: function() {
+    handleDelete() {
         this.props.onDelete(this.props.item);
     }
 
-});
-
-module.exports = TodoItem;
+}
